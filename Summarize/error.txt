@@ -1,0 +1,6 @@
+Cloning into 'antagonistic-lexicase'...
+remote: Enumerating objects: 24, done.
+remote: Counting objects: 100% (24/24), done.
+remote: Compressing objects: 100% (15/15), done.
+fatal: write error: Bad file descriptor
+fatal: index-pack failed
