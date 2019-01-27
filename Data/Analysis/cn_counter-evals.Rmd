@@ -23,24 +23,22 @@ library(plyr)
 library(reshape2)
 library(cowplot)
 
-source("https://gist.githubusercontent.com/benmarwick/2a1bb0133ff568cbe28d/Raw/FullLife/fb53bd97121f7f9ce947837ef1a4c65a73bffb3f/geom_flat_violin.R")
+source("https://gist.githubusercontent.com/benmarwick/2a1bb0133ff568cbe28d/Raw/HalfLife/fb53bd97121f7f9ce947837ef1a4c65a73bffb3f/geom_flat_violin.R")
 ```
 
 ### Load Data
 
 ```{r}
-# solutions_10K_data_loc <- "../data/ps-exp-data/min_programs_10000.csv"
-# solutions_10K_summary_data_loc <- "../data/ps-exp-data/min_programs_163KEval__solutions_summary.csv"
 
-prog_solutions_CN1_loc <- "../Raw/FullLife/CN_1Evaluations.csv"
-prog_solutions_CN2_loc <- "../Raw/FullLife/CN_2Evaluations.csv"
-prog_solutions_CN4_loc <- "../Raw/FullLife/CN_4Evaluations.csv"
-prog_solutions_CN8_loc <- "../Raw/FullLife/CN_8Evaluations.csv" 
-prog_solutions_CN16_loc <- "../Raw/FullLife/CN_16Evaluations.csv"
-prog_solutions_CN32_loc <- "../Raw/FullLife/CN_32Evaluations.csv"
-prog_solutions_CN64_loc <- "../Raw/FullLife/CN_64Evaluations.csv"
-prog_solutions_CN128_loc <- "../Raw/FullLife/CN_128Evaluations.csv"
-prog_solutions_CN256_loc <- "../Raw/FullLife/CN_256Evaluations.csv"
+prog_solutions_CN1_loc <- "../Raw/HalfLife/CN_1Evaluations.csv"
+prog_solutions_CN2_loc <- "../Raw/HalfLife/CN_2Evaluations.csv"
+prog_solutions_CN4_loc <- "../Raw/HalfLife/CN_4Evaluations.csv"
+prog_solutions_CN8_loc <- "../Raw/HalfLife/CN_8Evaluations.csv" 
+prog_solutions_CN16_loc <- "../Raw/HalfLife/CN_16Evaluations.csv"
+prog_solutions_CN32_loc <- "../Raw/HalfLife/CN_32Evaluations.csv"
+prog_solutions_CN64_loc <- "../Raw/HalfLife/CN_64Evaluations.csv"
+prog_solutions_CN128_loc <- "../Raw/HalfLife/CN_128Evaluations.csv"
+prog_solutions_CN256_loc <- "../Raw/HalfLife/CN_256Evaluations.csv"
 
 ```
 
@@ -65,66 +63,66 @@ Count of solutions found per problem (30 replicates each)
 ggplot(data = prog_solutions_CN1, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
-    ggtitle("CN1-CS512 - 1000 gens worth of evals") +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/FullLife/CN1_Count.png", height=5, width=6)
+    ggtitle("CN1-CS512 - 500 gens worth of evals") +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN1_Count.png", height=5, width=6)
 
 ggplot(data = prog_solutions_CN2, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
-    ggtitle("CN2-CS256  - 1000 gens worth of evals") +
+    ggtitle("CN2-CS256  - 500 gens worth of evals") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/FullLife/CN2_Count.png", height=5, width=6)
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN2_Count.png", height=5, width=6)
 
 ggplot(data = prog_solutions_CN4, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
-    ggtitle("CN4-CS128  - 1000 gens worth of evals") +
+    ggtitle("CN4-CS128  - 500 gens worth of evals") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/FullLife/CN4_Count.png", height=5, width=6)
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN4_Count.png", height=5, width=6)
 
 ggplot(data = prog_solutions_CN8, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
-    ggtitle("CN8-CS64  - 1000 gens worth of evals") +
+    ggtitle("CN8-CS64  - 500 gens worth of evals") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/FullLife/CN8_Count.png", height=5, width=6)
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN8_Count.png", height=5, width=6)
 
 ggplot(data = prog_solutions_CN16, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
-    ggtitle("CN16-CS32  - 1000 gens worth of evals") +
+    ggtitle("CN16-CS32  - 500 gens worth of evals") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/FullLife/CN16_Count.png", height=5, width=6)
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN16_Count.png", height=5, width=6)
 
 ggplot(data = prog_solutions_CN32, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
-    ggtitle("CN32-CS16  - 1000 gens worth of evals") +
+    ggtitle("CN32-CS16  - 500 gens worth of evals") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/FullLife/CN32_Count.png", height=5, width=6)
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN32_Count.png", height=5, width=6)
 
 ggplot(data = prog_solutions_CN64, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
-    ggtitle("CN64-CS8  - 1000 gens worth of evals") +
+    ggtitle("CN64-CS8  - 500 gens worth of evals") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/FullLife/CN64_Count.png", height=5, width=6)
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN64_Count.png", height=5, width=6)
 
 ggplot(data = prog_solutions_CN128, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
-    ggtitle("CN128-CS4  - 1000 gens worth of evals") +
+    ggtitle("CN128-CS4  - 500 gens worth of evals") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/FullLife/CN128_Count.png", height=5, width=6)
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN128_Count.png", height=5, width=6)
 
 ggplot(data = prog_solutions_CN256, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
-    ggtitle("CN256-CS2  - 1000 gens worth of evals") +
+    ggtitle("CN256-CS2  - 500 gens worth of evals") +
     coord_flip() + facet_wrap( ~ problem) + 
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-  ggsave("../Figs/Evaluations/SolutionCount/FullLife/CN256_Count.png", height=5, width=6)
+  ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN256_Count.png", height=5, width=6)
 ```
 
 
