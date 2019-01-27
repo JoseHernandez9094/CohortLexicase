@@ -1,0 +1,10 @@
+"0","ggplot(data = prog_solutions_CN256, mapping=aes(x=selection, y=count, fill=selection)) +
+    geom_bar(stat=""identity"") + xlab(""Selection"") + ylab(""Solutions Found"") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle(""CN256_CS2 - Gens"") +
+    coord_flip() + facet_wrap( ~ problem) +
+    levels = c(""Lexicase"", ""Cohort-Lexicase"", ""Down Sample"", ""Prog-Only Cohort"", ""Truncated"")
+"
+"2","Error in ggplot(data = prog_solutions_CN256, mapping = aes(x = selection,  : 
+  could not find function ""ggplot""
+"

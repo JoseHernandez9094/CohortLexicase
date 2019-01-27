@@ -1,0 +1,21 @@
+,problem,selection,count
+0,for-loop-index,Down Sample,19
+1,for-loop-index,Truncated,5
+2,for-loop-index,Cohort-Lexicase,38
+3,for-loop-index,Prog-Only Cohort,3
+4,for-loop-index,Lexicase,3
+5,median,Prog-Only Cohort,34
+6,median,Down Sample,38
+7,median,Truncated,41
+8,median,Cohort-Lexicase,45
+9,median,Lexicase,41
+10,small-or-large,Prog-Only Cohort,17
+11,small-or-large,Down Sample,2
+12,small-or-large,Truncated,13
+13,small-or-large,Cohort-Lexicase,24
+14,small-or-large,Lexicase,15
+15,smallest,Down Sample,40
+16,smallest,Prog-Only Cohort,38
+17,smallest,Cohort-Lexicase,47
+18,smallest,Truncated,37
+19,smallest,Lexicase,43

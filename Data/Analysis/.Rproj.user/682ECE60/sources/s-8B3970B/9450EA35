@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548479242711.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9450EA35",
+    "lastKnownWriteTime" : 1548620475,
+    "last_content_update" : 1548620475696,
+    "path" : "C:/Users/josex/Desktop/Research/Ofria/Project/CohortLexicase/Code/CohortLexicase/Data/Analysis/prob_cnt.Rmd",
+    "project_path" : "prob_cnt.Rmd",
+    "properties" : {
+        "cursorPosition" : "79,99",
+        "scrollLine" : "69",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

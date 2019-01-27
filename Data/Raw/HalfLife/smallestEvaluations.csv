@@ -1,0 +1,10 @@
+,problem,dims,count
+0,smallest,CN128_CS4,44
+1,smallest,CN16_CS32,48
+2,smallest,CN1_CS512,36
+3,smallest,CN256_CS2,0
+4,smallest,CN2_CS256,45
+5,smallest,CN32_CS16,46
+6,smallest,CN4_CS128,45
+7,smallest,CN64_CS8,45
+8,smallest,CN8_CS64,46

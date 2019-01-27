@@ -1,0 +1,4 @@
+"0","prog_solutions_CN1 <- read.csv(prog_solutions_CN1_loc, na.strings = ""NONE"")"
+"2","Error in read.table(file = file, header = header, sep = sep, quote = quote,  : 
+  object 'prog_solutions_CN1_loc' not found
+"

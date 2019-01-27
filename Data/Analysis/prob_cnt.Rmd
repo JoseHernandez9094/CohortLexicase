@@ -1,0 +1,93 @@
+---
+title: "Sorting network data exploration"
+output: 
+  html_document: 
+    keep_md: yes
+    toc: true
+    toc_float: true
+    collapsed: false
+    theme: default
+  pdf_document: default
+---
+
+<!-- ## Setup -->
+
+<!-- ### Dependencies -->
+
+```{r}
+
+library(readr)
+library(tidyr)
+library(ggplot2)
+library(plyr)
+library(reshape2)
+library(cowplot)
+
+source("https://gist.githubusercontent.com/benmarwick/2a1bb0133ff568cbe28d/Raw/HalfLife/fb53bd97121f7f9ce947837ef1a4c65a73bffb3f/geom_flat_violin.R")
+```
+
+### Load Data
+
+```{r}
+
+prob_100_gen_loc <- "../Raw/100_Or_Less/ProblemGenerations.csv"
+prob_300_gen_loc <- "../Raw/300_Or_Less/ProblemGenerations.csv"
+
+prob_100_eva_loc <- "../Raw/100_Or_Less/ProblemEvaluations.csv"
+prob_300_eva_loc <- "../Raw/300_Or_Less/ProblemEvaluations.csv"
+
+
+```
+
+```{r}
+
+prob_100_gen <- read.csv(prob_100_gen_loc, na.strings = "NONE")
+prob_300_gen <- read.csv(prob_300_gen_loc, na.strings = "NONE")
+ 
+prob_100_eva <- read.csv(prob_100_eva_loc, na.strings = "NONE")
+prob_300_eva <- read.csv(prob_300_eva_loc, na.strings = "NONE")
+
+
+```
+<!-- ## Analysis -->
+
+<!-- Count of solutions found per problem (50 replicates each) -->
+
+```{r}
+
+ggplot(data = prob_100_gen, mapping=aes(x=dims, y=count, fill=dims)) +
+    geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("gens") +
+    scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Generations/SolutionCount/100_Or_Less/100Gens-ProblemCompare.png", height=5, width=5)
+
+ggplot(data = prob_300_gen, mapping=aes(x=dims, y=count, fill=dims)) +
+    geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("gens") +
+    scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Generations/SolutionCount/300_Or_Less/300Gens-ProblemCompare.png", height=5, width=5)
+
+ggplot(data = prob_100_eva, mapping=aes(x=dims, y=count, fill=dims)) +
+    geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("gens") +
+    scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Generations/SolutionCount/100_Or_Less/100Evals-ProblemCompare.png", height=5, width=5)
+
+ggplot(data = prob_300_eva, mapping=aes(x=dims, y=count, fill=dims)) +
+    geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("gens") +
+    scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Generations/SolutionCount/300_Or_Less/300Evals-ProblemCompare.png", height=5, width=5)
+```
+
+
+
+
+
+
+
+    
