@@ -66,49 +66,56 @@ ggplot(data = prog_solutions_CN1, mapping=aes(x=selection, y=count, fill=selecti
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
     ggtitle("CN1_CS512 - Gens") +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Generations/SolutionCount/HalfLife/CN1_Count.png")
+    coord_flip() + facet_wrap( ~ problem) + 
+  ggsave("../Figs/Generations/SolutionCount/HalfLife/CN1_Count.png")
 
 ggplot(data = prog_solutions_CN2, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
     ggtitle("CN2_CS256 - Gens") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Generations/SolutionCount/HalfLife/CN2_Count.png")
+    coord_flip() + facet_wrap( ~ problem) + 
+  ggsave("../Figs/Generations/SolutionCount/HalfLife/CN2_Count.png")
 
 ggplot(data = prog_solutions_CN4, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
     ggtitle("CN4_CS128 - Gens") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Generations/SolutionCount/HalfLife/CN4_Count.png")
+    coord_flip() + facet_wrap( ~ problem) + 
+  ggsave("../Figs/Generations/SolutionCount/HalfLife/CN4_Count.png")
 
 ggplot(data = prog_solutions_CN8, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
     ggtitle("CN8_CS64 - Gens") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Generations/SolutionCount/HalfLife/CN8_Count.png")
+    coord_flip() + facet_wrap( ~ problem) + 
+  ggsave("../Figs/Generations/SolutionCount/HalfLife/CN8_Count.png")
 
 ggplot(data = prog_solutions_CN16, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
     ggtitle("CN16_CS32 - Gens") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Generations/SolutionCount/HalfLife/CN16_Count.png")
+    coord_flip() + facet_wrap( ~ problem) + 
+  ggsave("../Figs/Generations/SolutionCount/HalfLife/CN16_Count.png")
 
 ggplot(data = prog_solutions_CN32, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
     ggtitle("CN32_CS16 - Gens") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Generations/SolutionCount/HalfLife/CN32_Count.png")
+    coord_flip() + facet_wrap( ~ problem) + 
+  ggsave("../Figs/Generations/SolutionCount/HalfLife/CN32_Count.png")
 
 ggplot(data = prog_solutions_CN64, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
     geom_text(aes(label=count), nudge_y=2) +
     ggtitle("CN64_CS8 - Gens") +
     scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
-    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Generations/SolutionCount/HalfLife/CN64_Count.png")
+    coord_flip() + facet_wrap( ~ problem) + 
+  ggsave("../Figs/Generations/SolutionCount/HalfLife/CN64_Count.png")
 
 ggplot(data = prog_solutions_CN128, mapping=aes(x=selection, y=count, fill=selection)) +
     geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +

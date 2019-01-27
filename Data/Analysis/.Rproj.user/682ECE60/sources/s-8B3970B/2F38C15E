@@ -7,16 +7,16 @@
     "folds" : "",
     "hash" : "0",
     "id" : "2F38C15E",
-    "lastKnownWriteTime" : 1548479112,
-    "last_content_update" : 1548479112848,
+    "lastKnownWriteTime" : 1548626710,
+    "last_content_update" : 1548626710985,
     "path" : "C:/Users/josex/Desktop/Research/Ofria/Project/CohortLexicase/Code/CohortLexicase/Data/Analysis/cn_counter-gens.Rmd",
     "project_path" : "cn_counter-gens.Rmd",
     "properties" : {
-        "cursorPosition" : "135,4",
-        "scrollLine" : "0",
+        "cursorPosition" : "142,4",
+        "scrollLine" : "20",
         "tempName" : "Untitled2"
     },
-    "relative_order" : 2,
+    "relative_order" : 1,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_markdown"

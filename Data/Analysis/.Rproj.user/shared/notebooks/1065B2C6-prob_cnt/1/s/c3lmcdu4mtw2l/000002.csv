@@ -1,0 +1,11 @@
+"0","ggplot(data = prob_full_eva, mapping=aes(x=dims, y=count, fill=dims)) +
+    geom_bar(stat=""identity"") + xlab(""Dimensions"") + ylab(""Solutions Found"") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle(""Solutions up to 1000 gens worth of evals"") +
+    scale_x_discrete(limits = c(""cn1_cs512"", ""cn2_cs256"", ""cn4_cs128"", ""cn8_cs64"", ""cn16_cs32"", ""cn32_cs16"", ""cn64_cs8"", ""cn128_cs4"", ""cn256_cs2"")) +
+    coord_flip() + facet_wrap( ~ problem) + ggsave(""../Figs/Evaluations/SolutionCount/FullLife/FullEvals-ProblemCompare.png"", height=5, width=5)
+---
+title: ""Sorting network data exploration""
+"
+"2","Error in -title : invalid argument to unary operator
+"

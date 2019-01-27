@@ -9,13 +9,8 @@
 7,median,Prog-Only Cohort,29
 8,median,Truncated,42
 9,median,Lexicase,41
-10,for-loop-index,Down Sample,22
-11,for-loop-index,Cohort-Lexicase,29
-12,for-loop-index,Prog-Only Cohort,0
-13,for-loop-index,Truncated,2
-14,for-loop-index,Lexicase,3
-15,smallest,Prog-Only Cohort,34
-16,smallest,Cohort-Lexicase,46
-17,smallest,Truncated,40
-18,smallest,Down Sample,26
-19,smallest,Lexicase,43
+10,smallest,Prog-Only Cohort,34
+11,smallest,Cohort-Lexicase,46
+12,smallest,Truncated,40
+13,smallest,Down Sample,26
+14,smallest,Lexicase,43

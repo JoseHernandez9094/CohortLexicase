@@ -1,0 +1,11 @@
+"0","prob_100_gen_loc <- ""../Raw/100_Or_Less/ProblemGenerations.csv"""
+"0","prob_300_gen_loc <- ""../Raw/300_Or_Less/ProblemGenerations.csv"""
+"0","prob_half_gen_loc <- ""../Raw/HalfLife/ProblemGenerations.csv"""
+"0","prob_full_gen_loc <- ""../Raw/FullLife/ProblemGenerations.csv"""
+"0","prob_100_eva_loc <- ""../Raw/100_Or_Less/ProblemEvaluations.csv"""
+"0","prob_300_eva_loc <- ""../Raw/300_Or_Less/ProblemEvaluations.csv"""
+"0","prob_half_eva_loc <- ""../Raw/HalfLife/ProblemEvaluations.csv"""
+"0","prob_full_eva_loc <- ""../Raw/FullLife/ProblemEvaluations.csv"""
+"0","```"
+"2","Error: attempt to use zero-length variable name
+"

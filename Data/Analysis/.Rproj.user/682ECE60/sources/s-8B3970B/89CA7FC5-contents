@@ -1,0 +1,134 @@
+---
+title: "Sorting network data exploration"
+output: 
+  html_document: 
+    keep_md: yes
+    toc: true
+    toc_float: true
+    collapsed: false
+    theme: default
+  pdf_document: default
+---
+
+## Setup
+
+### Dependencies
+
+```{r}
+
+library(readr)
+library(tidyr)
+library(ggplot2)
+library(plyr)
+library(reshape2)
+library(cowplot)
+
+source("https://gist.githubusercontent.com/benmarwick/2a1bb0133ff568cbe28d/Raw/HalfLife/fb53bd97121f7f9ce947837ef1a4c65a73bffb3f/geom_flat_violin.R")
+```
+
+### Load Data
+
+```{r}
+
+prog_solutions_CN1_loc <- "../Raw/HalfLife/CN_1Evaluations.csv"
+prog_solutions_CN2_loc <- "../Raw/HalfLife/CN_2Evaluations.csv"
+prog_solutions_CN4_loc <- "../Raw/HalfLife/CN_4Evaluations.csv"
+prog_solutions_CN8_loc <- "../Raw/HalfLife/CN_8Evaluations.csv" 
+prog_solutions_CN16_loc <- "../Raw/HalfLife/CN_16Evaluations.csv"
+prog_solutions_CN32_loc <- "../Raw/HalfLife/CN_32Evaluations.csv"
+prog_solutions_CN64_loc <- "../Raw/HalfLife/CN_64Evaluations.csv"
+prog_solutions_CN128_loc <- "../Raw/HalfLife/CN_128Evaluations.csv"
+prog_solutions_CN256_loc <- "../Raw/HalfLife/CN_256Evaluations.csv"
+
+```
+
+```{r}
+prog_solutions_CN1 <- read.csv(prog_solutions_CN1_loc, na.strings = "NONE")
+prog_solutions_CN2 <- read.csv(prog_solutions_CN2_loc, na.strings = "NONE")
+prog_solutions_CN4 <- read.csv(prog_solutions_CN4_loc, na.strings = "NONE")
+prog_solutions_CN8 <- read.csv(prog_solutions_CN8_loc, na.strings = "NONE")
+prog_solutions_CN16 <- read.csv(prog_solutions_CN16_loc, na.strings = "NONE")
+prog_solutions_CN32 <- read.csv(prog_solutions_CN32_loc, na.strings = "NONE")
+prog_solutions_CN64 <- read.csv(prog_solutions_CN64_loc, na.strings = "NONE")
+prog_solutions_CN128 <- read.csv(prog_solutions_CN128_loc, na.strings = "NONE")
+prog_solutions_CN256 <- read.csv(prog_solutions_CN256_loc, na.strings = "NONE")
+
+
+```
+## Analysis
+
+Count of solutions found per problem (30 replicates each)
+
+```{r}
+ggplot(data = prog_solutions_CN1, mapping=aes(x=selection, y=count, fill=selection)) +
+    geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("CN1-CS512 - 500 gens worth of evals") +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN1_Count.png", height=5, width=6)
+
+ggplot(data = prog_solutions_CN2, mapping=aes(x=selection, y=count, fill=selection)) +
+    geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("CN2-CS256  - 500 gens worth of evals") +
+    scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN2_Count.png", height=5, width=6)
+
+ggplot(data = prog_solutions_CN4, mapping=aes(x=selection, y=count, fill=selection)) +
+    geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("CN4-CS128  - 500 gens worth of evals") +
+    scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN4_Count.png", height=5, width=6)
+
+ggplot(data = prog_solutions_CN8, mapping=aes(x=selection, y=count, fill=selection)) +
+    geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("CN8-CS64  - 500 gens worth of evals") +
+    scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN8_Count.png", height=5, width=6)
+
+ggplot(data = prog_solutions_CN16, mapping=aes(x=selection, y=count, fill=selection)) +
+    geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("CN16-CS32  - 500 gens worth of evals") +
+    scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN16_Count.png", height=5, width=6)
+
+ggplot(data = prog_solutions_CN32, mapping=aes(x=selection, y=count, fill=selection)) +
+    geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("CN32-CS16  - 500 gens worth of evals") +
+    scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN32_Count.png", height=5, width=6)
+
+ggplot(data = prog_solutions_CN64, mapping=aes(x=selection, y=count, fill=selection)) +
+    geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("CN64-CS8  - 500 gens worth of evals") +
+    scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN64_Count.png", height=5, width=6)
+
+ggplot(data = prog_solutions_CN128, mapping=aes(x=selection, y=count, fill=selection)) +
+    geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("CN128-CS4  - 500 gens worth of evals") +
+    scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
+    coord_flip() + facet_wrap( ~ problem) + ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN128_Count.png", height=5, width=6)
+
+ggplot(data = prog_solutions_CN256, mapping=aes(x=selection, y=count, fill=selection)) +
+    geom_bar(stat="identity") + xlab("Selection") + ylab("Solutions Found") + guides(fill=FALSE) +
+    geom_text(aes(label=count), nudge_y=2) +
+    ggtitle("CN256-CS2  - 500 gens worth of evals") +
+    coord_flip() + facet_wrap( ~ problem) + 
+    scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
+    scale_x_discrete(limits = c("Lexicase", "Cohort-Lexicase", "Down Sample", "Prog-Only Cohort", "Truncated")) +
+  ggsave("../Figs/Evaluations/SolutionCount/HalfLife/CN256_Count.png", height=5, width=6)
+```
+
+
+
+
+
+
+
+    
