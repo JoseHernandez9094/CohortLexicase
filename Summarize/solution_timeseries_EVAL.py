@@ -1,6 +1,5 @@
 #python3
 #This script will make csv so that graph_timeseries.py can create plots with them!
-#TODO: Make the functionality for Evaluations
 
 import pandas as p
 
