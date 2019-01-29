@@ -73,6 +73,8 @@ def main():
         counter = []
         print(cn, ': ')
         for prob in count[cn].keys():
+            if prob == 'for-loop-index':
+                continue
             print('    ', prob, ': ')
             for sel,cnt in count[cn][prob].items():
                 problem.append(prob)

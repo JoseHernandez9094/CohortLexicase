@@ -73,6 +73,8 @@ def main():
     dims = []
     counter = []
     for prob in count.keys():
+        if prob == 'for-loop-index':
+            continue
         print(prob, ': ')
         for cn in count[prob].keys():
             print('    ', cn, ': ')
