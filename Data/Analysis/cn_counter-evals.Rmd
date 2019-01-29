@@ -23,7 +23,6 @@ library(plyr)
 library(reshape2)
 library(cowplot)
 
-source("https://gist.githubusercontent.com/benmarwick/2a1bb0133ff568cbe28d/Raw/HalfLife/fb53bd97121f7f9ce947837ef1a4c65a73bffb3f/geom_flat_violin.R")
 ```
 
 ### Load Data

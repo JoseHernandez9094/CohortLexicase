@@ -1,0 +1,7 @@
+"0","ggplot(data = filter(min_networks_1000K_sol_summary, uses_cohorts == ""1""), mapping=aes(x=treatment, y=solutions_found, fill=treatment)) +"
+"0","    geom_bar(stat=""identity"") + xlab(""Condition"") + ylab(""Solutions Found"") + guides(fill=FALSE) +"
+"0","    geom_text(aes(label=solutions_found), nudge_y=1) +"
+"0","    coord_flip() + ggtitle(""Cohort lexicase selection - 1000K generations"") + ggsave(""cohorts_solution_cnt_1000K.png"")"
+"2","Error in filter_(.data, .dots = lazyeval::lazy_dots(...)) : 
+  object 'min_networks_1000K_sol_summary' not found
+"

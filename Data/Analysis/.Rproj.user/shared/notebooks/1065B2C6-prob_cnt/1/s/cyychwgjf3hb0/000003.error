@@ -1,0 +1,1 @@
+{"frames":[{"character_number":0,"end_character_number":0,"end_line_number":0,"file":"","func":"ggplot(data = prob_100_gen, mapping = aes(x = dims, y = count, \n    fill = dims))","line_number":0}],"message":"Error in ggplot(data = prob_100_gen, mapping = aes(x = dims, y = count,  : \n  object 'prob_100_gen' not found\n"}

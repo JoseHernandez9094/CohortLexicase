@@ -1,0 +1,92 @@
+---
+title: "Sorting network data exploration"
+output: 
+  html_document: 
+    keep_md: yes
+    toc: true
+    toc_float: true
+    collapsed: false
+    theme: default
+  pdf_document: default
+---
+
+## Setup
+
+### Dependencies
+
+```{r}
+
+library(readr)
+library(tidyr)
+library(ggplot2)
+library(plyr)
+library(reshape2)
+library(cowplot)
+library(tidyverse)
+library(dplyr)
+
+
+source("https://gist.githubusercontent.com/benmarwick/2a1bb0133ff568cbe28d/raw/fb53bd97121f7f9ce947837ef1a4c65a73bffb3f/geom_flat_violin.R")
+
+
+```
+
+### Load Data
+
+```{r}
+sol_100_log <- "../Raw/100_Or_Less/median__COHORT_LEX__violin__eval.csv"
+sol_300_log <- "../Raw/300_Or_Less/median__COHORT_LEX__violin__eval.csv"
+sol_half_log <- "../Raw/HalfLife/median__COHORT_LEX__violin__eval.csv"
+sol_full_log <- "../Raw/FullLife/median__COHORT_LEX__violin__eval.csv"
+
+```
+
+```{r}
+sol_100 <- read.csv(sol_100_log, na.strings = "NONE")
+sol_300 <- read.csv(sol_300_log, na.strings = "NONE")
+sol_half <- read.csv(sol_half_log, na.strings = "NONE")
+sol_full <- read.csv(sol_full_log, na.strings = "NONE")
+
+```
+## Analysis
+
+Count of solutions found per problem (30 replicates each)
+
+```{r}
+ggplot(sol_100, mapping=aes(x=dims, y=eval, fill=dims, colour=dims, scale_x_log10(eval))) +
+    geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
+    geom_point(position = position_jitter(width = .15), size = .25) +
+    geom_boxplot(aes(x = dims, y = eval),outlier.shape = NA, alpha = 0.3, width = .1, colour = "BLACK") +
+    ylab("Evaluation Found") + ylim(0, 30000000) + xlab("Dimension") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
+  scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
+    ggtitle("Evaluation solutions found up to 100 Evaluations") +
+    ggsave("../Figs/Evaluations/SolutionCount/100_Or_Less/Violin/median__violin_eval_100.png", height=15, width=17)
+
+ggplot(sol_300, mapping=aes(x=dims, y=eval, fill=dims, colour=dims)) +
+    geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
+    geom_point(position = position_jitter(width = .15), size = .25) +
+    geom_boxplot(aes(x = dims, y = eval),outlier.shape = NA, alpha = 0.3, width = .1, colour = "BLACK") +
+    ylab("Evaluation Found") + ylim(0, 80000000) + xlab("Dimension") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
+  scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
+    ggtitle("Evaluation solutions found up to 300 Evaluations") +
+    ggsave("../Figs/Evaluations/SolutionCount/300_Or_Less/Violin/median__violin_eval_300.png", height=15, width=10)
+
+ggplot(sol_half, mapping=aes(x=dims, y=eval, fill=dims, colour=dims)) +
+    geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
+    geom_point(position = position_jitter(width = .15), size = .25) +
+    geom_boxplot(aes(x = dims, y = eval),outlier.shape = NA, alpha = 0.3, width = .1, colour = "BLACK") +
+    ylab("Evaluation Found") + ylim(0, 150000000) + xlab("Dimension") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
+  scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
+    ggtitle("Evaluation solutions found up to 500 Evaluations") +
+    ggsave("../Figs/Evaluations/SolutionCount/HalfLife/Violin/median__violin_eval_half.png", height=15, width=10)
+
+ggplot(sol_full, mapping=aes(x=dims, y=eval, fill=dims, colour=dims)) +
+    geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
+    geom_point(position = position_jitter(width = .15), size = .25) +
+    geom_boxplot(aes(x = dims, y = eval),outlier.shape = NA, alpha = 0.3, width = .1, colour = "BLACK") +
+    ylab("Evaluation Found") + ylim(0, 200000000) + xlab("Dimension") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
+  scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
+    ggtitle("Evaluation solutions found up to 1000 Evaluations") +
+    ggsave("../Figs/Evaluations/SolutionCount/FullLife/Violin/median__violin_eval_full.png", height=15, width=10)
+
+```
