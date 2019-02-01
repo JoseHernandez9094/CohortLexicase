@@ -34,59 +34,72 @@ source("https://gist.githubusercontent.com/benmarwick/2a1bb0133ff568cbe28d/raw/f
 ### Load Data
 
 ```{r}
-sol_100_log <- "../Raw/100_Or_Less/median__COHORT_LEX__violin__gens.csv"
-sol_300_log <- "../Raw/300_Or_Less/median__COHORT_LEX__violin__gens.csv"
-sol_half_log <- "../Raw/HalfLife/median__COHORT_LEX__violin__gens.csv"
-sol_full_log <- "../Raw/FullLife/median__COHORT_LEX__violin__gens.csv"
+prob_list <- c("median", "compare-string-lengths", "small-or-large", "smallest")
+sel_list <- c("COHORT_LEX", "DOWN_SAMPLE_TESTS", "PROG_ONLY_COHORT_LEX", "TRUNCATED")
 
-```
-
-```{r}
-sol_100 <- read.csv(sol_100_log, na.strings = "NONE")
-sol_300 <- read.csv(sol_300_log, na.strings = "NONE")
-sol_half <- read.csv(sol_half_log, na.strings = "NONE")
-sol_full <- read.csv(sol_full_log, na.strings = "NONE")
-
-```
-## Analysis
-
-Count of solutions found per problem (30 replicates each)
-
-```{r}
-ggplot(sol_100, mapping=aes(x=dims, y=gens, fill=dims, colour=dims, scale_x_log10(gens))) +
-    geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
-    geom_point(position = position_jitter(width = .15), size = .25) +
-    geom_boxplot(aes(x = dims, y = gens),outlier.shape = NA, alpha = 0.3, width = .1, colour = "BLACK") +
-    ylab("Generation Found") + ylim(0, 100) + xlab("Dimension") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
-  scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
-    ggtitle("Generation solutions found up to 100 Generations") +
-    ggsave("../Figs/Generations/SolutionCount/100_Or_Less/Violin/median__violin_gen_100.png", height=15, width=17)
-
-ggplot(sol_300, mapping=aes(x=dims, y=gens, fill=dims, colour=dims)) +
-    geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
-    geom_point(position = position_jitter(width = .15), size = .25) +
-    geom_boxplot(aes(x = dims, y = gens),outlier.shape = NA, alpha = 0.3, width = .1, colour = "BLACK") +
-    ylab("Generation Found") + ylim(0, 300) + xlab("Dimension") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
-  scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
-    ggtitle("Generation solutions found up to 300 Generations") +
-    ggsave("../Figs/Generations/SolutionCount/300_Or_Less/Violin/median__violin_gen_300.png", height=15, width=10)
-
-ggplot(sol_half, mapping=aes(x=dims, y=gens, fill=dims, colour=dims)) +
-    geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
-    geom_point(position = position_jitter(width = .15), size = .25) +
-    geom_boxplot(aes(x = dims, y = gens),outlier.shape = NA, alpha = 0.3, width = .1, colour = "BLACK") +
-    ylab("Generation Found") + ylim(0, 500) + xlab("Dimension") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
-  scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
-    ggtitle("Generation solutions found up to 500 Generations") +
-    ggsave("../Figs/Generations/SolutionCount/HalfLife/Violin/median__violin_gen_half.png", height=15, width=10)
-
-ggplot(sol_full, mapping=aes(x=dims, y=gens, fill=dims, colour=dims)) +
-    geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
-    geom_point(position = position_jitter(width = .15), size = .25) +
-    geom_boxplot(aes(x = dims, y = gens),outlier.shape = NA, alpha = 0.3, width = .1, colour = "BLACK") +
-    ylab("Generation Found") + ylim(0, 1000) + xlab("Dimension") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
-  scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
-    ggtitle("Generation solutions found up to 0 Generations") +
-    ggsave("../Figs/Generations/SolutionCount/FullLife/Violin/median__violin_gen_full.png", height=15, width=10)
-
+for (sel in sel_list)
+{
+  for (prob in prob_list)
+  {
+    sol_100_log <- paste("../Raw/100_Or_Less/",prob,"__",sel,"__violin__gens.csv", sep = "")
+    sol_300_log <- paste("../Raw/300_Or_Less/",prob,"__",sel,"__violin__gens.csv", sep = "")
+    sol_half_log <- paste("../Raw/HalfLife/",prob,"__",sel,"__violin__gens.csv", sep = "")
+    sol_full_log <- paste("../Raw/FullLife/",prob,"__",sel,"__violin__gens.csv", sep = "")
+    
+    
+    sol_100 <- read.csv(sol_100_log, na.strings = "NONE")
+    sol_300 <- read.csv(sol_300_log, na.strings = "NONE")
+    sol_half <- read.csv(sol_half_log, na.strings = "NONE")
+    sol_full <- read.csv(sol_full_log, na.strings = "NONE")
+    
+    if (nrow(sol_100) > 1)
+    {
+      ggplot(sol_100, mapping=aes(x=dims, y=gens, fill=dims, colour=dims, scale_x_log10(gens))) +
+        geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
+        geom_point(position = position_jitter(width = .15), size = .25) +
+        geom_boxplot(aes(x = dims, y = gens),outlier.shape = NA, alpha = 0.3, width = .1, colour = "BLACK") +
+        ylab("Generation Found") + ylim(0, 100) + xlab("Dimension") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
+      scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
+        ggtitle("Solutions found up to 100 generations") +
+        ggsave(paste("../Figs/Generations/SolutionCount/100_Or_Less/Violin/", prob,"__",sel,"__violin_gens_100.png", sep = ""), height=15, width=17)
+    }
+    
+    if (nrow(sol_300) > 1)
+    {
+      ggplot(sol_300, mapping=aes(x=dims, y=gens, fill=dims, colour=dims)) +
+        geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
+        geom_point(position = position_jitter(width = .15), size = .25) +
+        geom_boxplot(aes(x = dims, y = gens),outlier.shape = NA, alpha = 0.3, width = .1, colour = "BLACK") +
+        ylab("Generation Found") + ylim(0, 300) + xlab("Dimension") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
+      scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
+        ggtitle("Solutions found up to 300 generations") +
+        ggsave(paste("../Figs/Generations/SolutionCount/300_Or_Less/Violin/", prob,"__",sel,"__violin_gens_300.png", sep = ""), height=15, width=10)
+    }
+    
+    if (nrow(sol_half) > 1)
+    {
+      ggplot(sol_half, mapping=aes(x=dims, y=gens, fill=dims, colour=dims)) +
+      geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
+      geom_point(position = position_jitter(width = .15), size = .25) +
+      geom_boxplot(aes(x = dims, y = gens),outlier.shape = NA, alpha = 0.3, width = .1, colour = "BLACK") +
+      ylab("Generation Found") + ylim(0, 500) + xlab("Dimension") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
+      scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
+      ggtitle("Solutions found up to 500 generations") +
+      ggsave(paste("../Figs/Generations/SolutionCount/HalfLife/Violin/", prob,"__",sel,"__violin_gens_half.png", sep = ""), height=15, width=10)
+    }
+    
+    if (nrow(sol_full) > 1)
+    {
+      ggplot(sol_full, mapping=aes(x=dims, y=gens, fill=dims, colour=dims)) +
+      geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
+      geom_point(position = position_jitter(width = .15), size = .25) +
+      geom_boxplot(aes(x = dims, y = gens),outlier.shape = NA, alpha = 0.3, width = .1, colour = "BLACK") +
+      ylab("Generation Found") + ylim(0, 1000) + xlab("Dimension") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
+      scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) + 
+      ggtitle("Solutions found up to 1000 generations") +
+      ggsave(paste("../Figs/Generations/SolutionCount/FullLife/Violin/", prob,"__",sel,"__violin_gens_full.png", sep = ""), height=15, width=10)
+    }
+    
+  }
+}
 ```
