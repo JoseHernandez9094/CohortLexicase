@@ -58,7 +58,7 @@ for (sel in sel_list)
   
   #Will plot graphs for solutions found before 100 generation
   ggplot(data = prob_100_gen, mapping=aes(x=dims, y=count, fill=dims)) +
-      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + guides(fill=FALSE) +
+      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + ylim(0, 50) + guides(fill=FALSE) +
       geom_text(aes(label=count), nudge_y=2) +
       ggtitle("Solutions up to 100 generations") +
       scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
@@ -66,7 +66,7 @@ for (sel in sel_list)
   
   #Will plot graphs for soulutions found before 300 generations
   ggplot(data = prob_300_gen, mapping=aes(x=dims, y=count, fill=dims)) +
-      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + guides(fill=FALSE) +
+      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + ylim(0, 50) + guides(fill=FALSE) +
       geom_text(aes(label=count), nudge_y=2) +
       ggtitle("Solutions up to 300 generations") +
       scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
@@ -74,7 +74,7 @@ for (sel in sel_list)
   
   #Will plot graphs for solutions found before half life, 500 generation
   ggplot(data = prob_half_gen, mapping=aes(x=dims, y=count, fill=dims)) +
-      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + guides(fill=FALSE) +
+      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + ylim(0, 50) + guides(fill=FALSE) +
       geom_text(aes(label=count), nudge_y=2) +
       ggtitle("Solutions up to 500 generations") +
       scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
@@ -82,35 +82,35 @@ for (sel in sel_list)
   
   #Will plot graphs for solutions found at the end of the run, 1000 generations
   ggplot(data = prob_full_gen, mapping=aes(x=dims, y=count, fill=dims)) +
-  geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + guides(fill=FALSE) +
+  geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + ylim(0, 50) + guides(fill=FALSE) +
   geom_text(aes(label=count), nudge_y=2) +
   ggtitle("Solutions found at the end of run") +
   scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
   coord_flip() + facet_wrap( ~ problem) + ggsave(paste("../Figs/Generations/SolutionCount/FullLife/Problems/", sel,"__Problem_Count_1000.png", sep = ""), height=15, width=17)
   
   ggplot(data = prob_100_eva, mapping=aes(x=dims, y=count, fill=dims)) +
-      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + guides(fill=FALSE) +
+      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + ylim(0, 50) + guides(fill=FALSE) +
       geom_text(aes(label=count), nudge_y=2) +
       ggtitle("Solutions up to 100 gens worth of evals") +
       scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
       coord_flip() + facet_wrap( ~ problem) + ggsave(paste("../Figs/Evaluations/SolutionCount/100_Or_Less/Problems/", sel,"__Problem_Count_100.png", sep = ""), height=15, width=17)
   
-  ggplot(data = prob_300_eva, mapping=aes(x=dims, y=count, fill=dims)) +
-      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + guides(fill=FALSE) +
+  ggplot(data = prob_300_eva, mapping=aes(x=dims, y=count, fill=dims)) + 
+      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + ylim(0, 50) + guides(fill=FALSE) +
       geom_text(aes(label=count), nudge_y=2) +
       ggtitle("Solutions up to 300 gens worth of evals") +
       scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
       coord_flip() + facet_wrap( ~ problem) + ggsave(paste("../Figs/Evaluations/SolutionCount/300_Or_Less/Problems/", sel,"__Problem_Count_300.png", sep = ""), height=15, width=17)
   
   ggplot(data = prob_half_eva, mapping=aes(x=dims, y=count, fill=dims)) +
-      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + guides(fill=FALSE) +
+      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + ylim(0, 50) + guides(fill=FALSE) +
       geom_text(aes(label=count), nudge_y=2) +
       ggtitle("Solutions up to 500 gens worth of evals") +
       scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
       coord_flip() + facet_wrap( ~ problem) + ggsave(paste("../Figs/Evaluations/SolutionCount/HalfLife/Problems/", sel,"__Problem_Count_500.png", sep = ""), height=15, width=17)
 
   ggplot(data = prob_full_eva, mapping=aes(x=dims, y=count, fill=dims)) +
-      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + guides(fill=FALSE) +
+      geom_bar(stat="identity") + xlab("Dimensions") + ylab("Solutions Found") + ylim(0, 50) + guides(fill=FALSE) +
       geom_text(aes(label=count), nudge_y=2) +
       ggtitle("Solutions up to 1000 gens worth of evals") +
       scale_x_discrete(limits = c("cn1_cs512", "cn2_cs256", "cn4_cs128", "cn8_cs64", "cn16_cs32", "cn32_cs16", "cn64_cs8", "cn128_cs4", "cn256_cs2")) +
