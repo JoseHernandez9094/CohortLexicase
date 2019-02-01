@@ -73,7 +73,7 @@ def main():
         counter = []
         print(cn, ': ')
         for prob in count[cn].keys():
-            if prob == 'for-loop-index':
+            if prob == 'for-loop-index' or prob == 'sum-of squares':
                 continue
             print('    ', prob, ': ')
             for sel,cnt in count[cn][prob].items():

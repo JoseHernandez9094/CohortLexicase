@@ -45,6 +45,8 @@ def main():
         cnt = row[4]
 
         if prob not in count:
+            if prob == 'for-loop-index' or prob == 'sum-of squares':
+                continue
             count[prob] = {}
             if sel not in count[prob]:
                 count[prob][sel] = {}

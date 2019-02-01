@@ -40,55 +40,54 @@ def main():
         cs = int(treat[3].strip('CS_'))
         cnt = row[4]
 
-        if prob not in count:
-            count[prob] = {}
-            if cn not in count[prob]:
-                count[prob][cn] = {}
-                if sel not in count[prob][cn]:
-                    count[prob][cn][sel] = cnt
+        if sel not in count:
+            count[sel] = {}
+            if prob not in count[sel]:
+                count[sel][prob] = {}
+                if cn not in count[sel][prob]:
+                    count[sel][prob][cn] = cnt
                 else:
-                    count[prob][cn][sel] = cnt
+                    count[sel][prob][cn] = cnt
             else:
-                if sel not in count[prob][cn]:
-                    count[prob][cn][sel] = cnt
+                if cn not in count[sel][prob]:
+                    count[sel][prob][cn] = cnt
                 else:
-                    count[prob][cn][sel] = cnt
+                    count[sel][prob][cn] = cnt
         else:
-            if cn not in count[prob]:
-                count[prob][cn] = {}
-                if sel not in count[prob][cn]:
-                    count[prob][cn][sel] = cnt
+            if prob not in count[sel]:
+                count[sel][prob] = {}
+                if cn not in count[sel][prob]:
+                    count[sel][prob][cn] = cnt
                 else:
-                    count[prob][cn][sel] = cnt
+                    count[sel][prob][cn] = cnt
             else:
-                if sel not in count[prob][cn]:
-                    count[prob][cn][sel] = cnt
+                if cn not in count[sel][prob]:
+                    count[sel][prob][cn] = cnt
                 else:
-                    count[prob][cn][sel] = cnt
+                    count[sel][prob][cn] = cnt
 
     FULL_LEX = 1
 
     #  Used to verify that the dictionary is being set correctly
-    problem = []
-    dims = []
-    counter = []
-    for prob in count.keys():
-        if prob == 'for-loop-index':
-            continue
-        print(prob, ': ')
-        for cn in count[prob].keys():
-            print('    ', cn, ': ')
-            for sel,cnt in count[prob][cn].items():
-                if sel == "COHORT_LEX":
-                    problem.append(prob)
-                    dims.append(DIMS[cn])
-                    counter.append(cnt)
-                    print('        ', sel, ': ', cnt)
+    for sel in count.keys():
+        problem = []
+        dims = []
+        counter = []
+        print(sel, ': ')
+        for prob in count[sel].keys():
+            if prob == 'for-loop-index' or prob == 'sum-of-squares':
+                continue
+            print('    ', prob, ': ')
+            for cn,cnt in count[sel][prob].items():
+                problem.append(prob)
+                dims.append(DIMS[cn])
+                counter.append(cnt)
+                print('        ', cn, ': ', cnt)
 
-    raw_data = {'problem':problem, 'dims':dims, 'count':counter}
-    df = pd.DataFrame(raw_data, columns=['problem', 'dims', 'count'])
-    df.to_csv(write_directory+'Problem'+'Generations'+'.csv')
-    print()
+        raw_data = {'problem':problem, 'dims':dims, 'count':counter}
+        df = pd.DataFrame(raw_data, columns=['problem', 'dims', 'count'])
+        df.to_csv(write_directory+'Problem__'+'Generations__'+sel+'.csv')
+        print()
 
 
 if __name__ == "__main__":
