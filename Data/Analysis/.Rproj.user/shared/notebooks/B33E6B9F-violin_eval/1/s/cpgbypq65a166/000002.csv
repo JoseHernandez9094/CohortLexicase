@@ -1,0 +1,11 @@
+"0","      ggplot(sol_full, mapping=aes(x=dims, y=eval, fill=dims, colour=dims)) +
+      geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
+      geom_point(position = position_jitter(width = .15), size = .25) +
+      geom_boxplot(aes(x = dims, y = eval),outlier.shape = NA, alpha = 0.3, width = .1, colour = ""BLACK"") +
+      ylab(""Evaluation Found"") + ylim(0, 200000000) + xlab(""Dimension"") + coord_flip() + guides(fill=FALSE, colour=FALSE) +
+      scale_x_discrete(limits = c(""cn1_cs512"", ""cn2_cs256"", ""cn4_cs128"", ""cn8_cs64"", ""cn16_cs32"", ""cn32_cs16"", ""cn64_cs8"", ""cn128_cs4"", ""cn256_cs2"")) + 
+      ggtitle(""Solutions found up to 1000 gens worth of evals"") +
+      ggsave(paste(""../Figs/Evaluations/SolutionCount/FullLife/Violin/"", prob,""__"",sel,""__violin_eval_full.png"", sep = """"), height=15, width=10)
+"
+"2","Error: could not find function ""ggplot""
+"

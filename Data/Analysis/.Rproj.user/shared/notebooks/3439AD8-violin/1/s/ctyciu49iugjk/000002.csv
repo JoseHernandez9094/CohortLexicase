@@ -1,9 +1,0 @@
-"0","ggplot(data = filter(sol_100, problem == ""median""), mapping=aes(x=treatment, y=update_found, fill=treatment, colour=treatment)) +"
-"0","    geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +"
-"0","    geom_point(position = position_jitter(width = .15), size = .25) +"
-"0","    geom_boxplot(aes(x = treatment, y = update_found),outlier.shape = NA, alpha = 0.3, width = .1, colour = ""BLACK"") +"
-"0","    ylab(""Update Found"") + ylim(60, 130) + xlab(""Treatment"") + coord_flip() + guides(fill=FALSE, colour=FALSE) +"
-"0","    ggtitle(""Evaluation solutions found up to 100 generations"")"
-"2","Error in filter(sol_100, problem == ""median"") : 
-  object 'problem' not found
-"
