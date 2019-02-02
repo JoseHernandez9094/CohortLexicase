@@ -8,11 +8,11 @@
 6,compare-string-lengths,cn64_cs8,1
 7,compare-string-lengths,cn8_cs64,5
 8,for-loop-index,cn128_cs4,0
-9,for-loop-index,cn16_cs32,0
-10,for-loop-index,cn256_cs2,0
-11,for-loop-index,cn2_cs256,1
+9,for-loop-index,cn16_cs32,2
+10,for-loop-index,cn256_cs2,1
+11,for-loop-index,cn2_cs256,3
 12,for-loop-index,cn32_cs16,0
-13,for-loop-index,cn4_cs128,1
+13,for-loop-index,cn4_cs128,2
 14,for-loop-index,cn64_cs8,0
 15,for-loop-index,cn8_cs64,0
 16,median,cn128_cs4,0
@@ -39,3 +39,8 @@
 37,smallest,cn4_cs128,0
 38,smallest,cn64_cs8,0
 39,smallest,cn8_cs64,3
+0,compare-string-lengths,cn1_cs512,5
+1,for-loop-index,cn1_cs512,4
+2,median,cn1_cs512,1
+3,small-or-large,cn1_cs512,0
+4,smallest,cn1_cs512,0

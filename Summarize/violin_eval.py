@@ -27,6 +27,7 @@ def main():
     args = parser.parse_args()
     data_directory = args.data_directory
     write_directory = args.dump_directory
+    write_directory = write_directory.strip()
 
     df = pd.read_csv(data_directory)
     df = df.values.tolist()
@@ -45,7 +46,7 @@ def main():
         cnt = row[4]
 
         if prob not in count:
-            if prob == 'for-loop-index' or prob == 'sum-of squares':
+            if prob == 'sum-of squares':
                 continue
             count[prob] = {}
             if sel not in count[prob]:

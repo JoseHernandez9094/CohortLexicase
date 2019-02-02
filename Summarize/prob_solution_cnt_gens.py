@@ -27,6 +27,7 @@ def main():
     args = parser.parse_args()
     data_directory = args.data_directory
     write_directory = args.dump_directory
+    write_directory = write_directory.strip()
 
     df = pd.read_csv(data_directory)
     df = df.values.tolist()
@@ -38,7 +39,7 @@ def main():
         sel = treat[1][4:]
         cn = int(treat[2].strip('CN_'))
         cs = int(treat[3].strip('CS_'))
-        cnt = row[4]
+        cnt = row[5]
 
         if sel not in count:
             count[sel] = {}
@@ -75,7 +76,7 @@ def main():
         counter = []
         print(sel, ': ')
         for prob in count[sel].keys():
-            if prob == 'for-loop-index' or prob == 'sum-of-squares':
+            if prob == 'sum-of-squares':
                 continue
             print('    ', prob, ': ')
             for cn,cnt in count[sel][prob].items():

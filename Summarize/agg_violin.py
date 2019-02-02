@@ -21,6 +21,7 @@ def main():
     parser.add_argument("data_directory", type=str, help="Target experiment directory.")
     args = parser.parse_args()
     data_directory = args.data_directory
+    data_directory = data_directory.strip()
 
     for p in PROBLEM:
         path = data_directory + p + '__COHORT_LEX__violin__eval.csv'

@@ -33,7 +33,6 @@ sel_list <- c("COHORT_LEX", "DOWN_SAMPLE_TESTS", "PROG_ONLY_COHORT_LEX", "TRUNCA
 
 for (sel in sel_list)
 {
-  # sel <- "TRUNCATED"
   prob_100_gen_loc <- paste("../Raw/100_Or_Less/Problem__Generations__", sel, ".csv", sep = "")
   prob_300_gen_loc <- paste("../Raw/300_Or_Less/Problem__Generations__", sel, ".csv", sep = "")
   prob_half_gen_loc <- paste("../Raw/HalfLife/Problem__Generations__", sel, ".csv", sep = "")

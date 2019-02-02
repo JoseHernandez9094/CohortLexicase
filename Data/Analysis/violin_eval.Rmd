@@ -34,7 +34,7 @@ source("https://gist.githubusercontent.com/benmarwick/2a1bb0133ff568cbe28d/raw/f
 ### Load Data
 
 ```{r}
-prob_list <- c("median", "compare-string-lengths", "small-or-large", "smallest")
+prob_list <- c("median", "compare-string-lengths", "small-or-large", "smallest", "for-loop-index")
 sel_list <- c("COHORT_LEX", "DOWN_SAMPLE_TESTS", "PROG_ONLY_COHORT_LEX", "TRUNCATED")
 
 for (sel in sel_list)
@@ -76,7 +76,7 @@ for (sel in sel_list)
         ggsave(paste("../Figs/Evaluations/SolutionCount/300_Or_Less/Violin/", prob,"__",sel,"__violin_eval_300.png", sep = ""), height=15, width=10)
     }
     
-    if (nrow(sol_half) > 1)
+    if ((nrow(sol_half) > 1) & (prob != 'for-loop-index'))
     {
       ggplot(sol_half, mapping=aes(x=dims, y=eval, fill=dims, colour=dims)) +
       geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
@@ -88,7 +88,7 @@ for (sel in sel_list)
       ggsave(paste("../Figs/Evaluations/SolutionCount/HalfLife/Violin/", prob,"__",sel,"__violin_eval_half.png", sep = ""), height=15, width=10)
     }
     
-    if (nrow(sol_full) > 1)
+    if ((nrow(sol_half) > 1) & (prob != 'for-loop-index'))
     {
       ggplot(sol_full, mapping=aes(x=dims, y=eval, fill=dims, colour=dims)) +
       geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +

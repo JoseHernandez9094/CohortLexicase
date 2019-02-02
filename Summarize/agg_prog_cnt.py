@@ -21,6 +21,7 @@ def main():
     parser.add_argument("data_directory", type=str, help="Target experiment directory.")
     args = parser.parse_args()
     data_directory = args.data_directory
+    data_directory = data_directory.strip()
 
     #Collect all the full lexicase data for generations
     df = pd.read_csv(data_directory+"Problem__Generations__COHORT_LEX.csv")

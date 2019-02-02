@@ -76,7 +76,7 @@ for (sel in sel_list)
         ggsave(paste("../Figs/Generations/SolutionCount/300_Or_Less/Violin/", prob,"__",sel,"__violin_gens_300.png", sep = ""), height=15, width=10)
     }
     
-    if (nrow(sol_half) > 1)
+    if ((nrow(sol_half) > 1) & (prob != 'for-loop-index'))
     {
       ggplot(sol_half, mapping=aes(x=dims, y=gens, fill=dims, colour=dims)) +
       geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
@@ -88,7 +88,7 @@ for (sel in sel_list)
       ggsave(paste("../Figs/Generations/SolutionCount/HalfLife/Violin/", prob,"__",sel,"__violin_gens_half.png", sep = ""), height=15, width=10)
     }
     
-    if (nrow(sol_full) > 1)
+    if ((nrow(sol_half) > 1) & (prob != 'for-loop-index'))
     {
       ggplot(sol_full, mapping=aes(x=dims, y=gens, fill=dims, colour=dims)) +
       geom_flat_violin(position=position_nudge(x=.2, y=0), adjust=2) +
