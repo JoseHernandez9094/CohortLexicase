@@ -23,7 +23,7 @@ PROBLEM_compare-string-lengths__SEL_PROG_ONLY_COHORT_LEX__CN_2__CS_256,SEL_PROG_
 PROBLEM_compare-string-lengths__SEL_PROG_ONLY_COHORT_LEX__CN_32__CS_16,SEL_PROG_ONLY_COHORT_LEX,cn32:cs16,compare-string-lengths,1,32,50,10
 PROBLEM_compare-string-lengths__SEL_PROG_ONLY_COHORT_LEX__CN_4__CS_128,SEL_PROG_ONLY_COHORT_LEX,cn4:cs128,compare-string-lengths,1,38,50,10
 PROBLEM_compare-string-lengths__SEL_PROG_ONLY_COHORT_LEX__CN_64__CS_8,SEL_PROG_ONLY_COHORT_LEX,cn64:cs8,compare-string-lengths,1,15,50,10
-PROBLEM_compare-string-lengths__SEL_PROG_ONLY_COHORT_LEX__CN_8__CS_64,SEL_PROG_ONLY_COHORT_LEX,cn8:cs64,compare-string-lengths,1,37,50,10
+PROBLEM_compare-string-lengths__SEL_PROG_ONLY_COHORT_LEX__CN_8__CS_64,SEL_PROG_ONLY_COHORT_LEX,cn8:cs64,compare-string-lengths,1,38,50,10
 PROBLEM_compare-string-lengths__SEL_TRUNCATED__CN_128__CS_4,SEL_TRUNCATED,cn128:cs4,compare-string-lengths,1,25,50,10
 PROBLEM_compare-string-lengths__SEL_TRUNCATED__CN_16__CS_32,SEL_TRUNCATED,cn16:cs32,compare-string-lengths,1,43,50,10
 PROBLEM_compare-string-lengths__SEL_TRUNCATED__CN_256__CS_2,SEL_TRUNCATED,cn256:cs2,compare-string-lengths,1,15,50,10
